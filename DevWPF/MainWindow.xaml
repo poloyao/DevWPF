@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:DevWPF" 
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+    xmlns:vm="clr-namespace:DevWPF.VM"
+    DataContext="{dxmvvm:ViewModelSource Type=vm:MainVM}"
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" 
     xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar" WindowStartupLocation="CenterScreen">
     <dxmvvm:Interaction.Behaviors>
@@ -18,7 +20,9 @@
         <dxdo:DockLayoutManager>
             <dxdo:LayoutGroup Orientation="Vertical">
                 <dxdo:LayoutGroup>
-                    <dxdo:LayoutPanel ShowCaption="False" MaxHeight="100" />
+                    <dxdo:LayoutPanel ShowCaption="False"  MaxHeight="80">
+                        <TextBlock FontSize="48" FontWeight="Bold" HorizontalAlignment="Center" TextDecorations="{x:Null}" Background="#00000000">暂时还没起好名</TextBlock>
+                    </dxdo:LayoutPanel>
                 </dxdo:LayoutGroup>
                 <dxdo:LayoutGroup>
                     <dxdo:LayoutPanel ShowCaption="False" ItemWidth="0.25*" >
@@ -28,7 +32,7 @@
                                 <dxn:ExplorerBarView />
                             </dxn:NavBarControl.View>
                             <dxn:NavBarGroup Header="合同管理">
-                                <dxn:NavBarItem Content="新建合同" />
+                                <dxn:NavBarItem Content="新建合同" Command="{Binding OnNavigateDetailsCommand}" />
                                 <dxn:NavBarItem Content="合同列表" />
                             </dxn:NavBarGroup>
                             <dxn:NavBarGroup Header="放款管理">
